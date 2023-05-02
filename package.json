@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npx husky install"
+    "postinstall": "npx husky install",
+    "proto:build": "cd ./packages/logic && python3 -m grpc_tools.protoc -I../protos --python_out=. --pyi_out=. --grpc_python_out=. ../protos/monitor.proto"
   },
   "private": true,
   "devDependencies": {
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/morajlab-aprp/client#readme",
   "lint-staged": {
     "**/*": "prettier -w -u",
-    "**/*.go": "go fmt"
+    "**/*.go": "go fmt",
+    "**/*.py": "black"
   }
 }

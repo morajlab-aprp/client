@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Monitor {
+  rpc SendData (MonitorRequest) returns (MonitorReply) {}
+}
+
+message MonitorRequest {
+  string data = 1;
+}
+
+message MonitorReply {
+  string message = 1;
+}
