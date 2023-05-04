@@ -1,0 +1,33 @@
+[tool.coverage.run]
+branch = true
+source = [ "src" ]
+
+[tool.coverage.report]
+exclude_lines = [ "if TYPE_CHECKING:" ]
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-fail-under=100 --cov-report html:'../../../../coverage/packages/client/packages/logic/html' --cov-report xml:'../../../../coverage/packages/client/packages/logic/coverage.xml' --junitxml='../../../../reports/packages/client/packages/logic/unittests/junit.xml' --html='../../../../reports/packages/client/packages/logic/unittests/html/index.html'"
+
+[tool.poetry]
+name = "clientlogic"
+version = "1.0.0"
+description = "APRP client project"
+authors = [ ]
+license = "Proprietary"
+readme = "README.md"
+
+  [[tool.poetry.packages]]
+  include = "src"
+
+  [tool.poetry.dependencies]
+  python = ">=3.8,<3.12"
+  grpcio = "^1.54.0"
+
+    [tool.poetry.dependencies.protos]
+    path = "../../../protos"
+    develop = true
+
+[build-system]
+requires = [ "poetry-core==1.1.0" ]
+build-backend = "poetry.core.masonry.api"
